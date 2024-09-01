@@ -16,10 +16,8 @@ import io.restassured.http.ContentType;
 
 public class ScoreControllerRA {
 	
-	private String clientUserName, clientPassWord, admuserName, admPassWord;
-	private String clientToken, adminToken, invalidToken;
-	private long nonExistingId;
-	private long existingId;
+	private String clientUserName, clientPassWord;
+	private String clientToken;
 	
 	private  Map<String, Object> postScoreInstance;
 	
@@ -31,18 +29,10 @@ public class ScoreControllerRA {
 	void setUp() throws Exception {
 		baseURI = "http://localhost:8080"; 
 		
-		existingId = 29L;
-		nonExistingId = 100;
-		
 		clientUserName = "alex@gmail.com";
 		clientPassWord = "123456";
 		
-		admuserName = "maria@gmail.com";
-		admPassWord = "123456";
-		
 		clientToken = TokenUtil.obtainAccessToken(clientUserName, clientPassWord);
-		adminToken = TokenUtil.obtainAccessToken(admuserName, admPassWord);
-		invalidToken = adminToken + "xpto";
 		
 		//movieId inexistente
 		postScoreInstance = new HashMap<>();
